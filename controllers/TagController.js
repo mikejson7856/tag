@@ -1,6 +1,6 @@
 import { Image } from "../models/ImageModel.js";
 import { Tag } from "../models/TagModel.js";
-import fs from "fs";
+
 export const getTags = async (req, res) => {
   try {
     const tags = await Tag.find();
@@ -13,6 +13,22 @@ export const getTags = async (req, res) => {
     console.log(error);
   }
 };
+
+
+export const getTagWithImages = async (req,res) => {
+  try {
+    const {tag} = req.params;
+
+    const data = await Image.find({tag}).select('frontUrl backUrl');
+
+
+    res.status(201).json({
+      data
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 export const createTag = async (req, res) => {
   try {
@@ -57,6 +73,6 @@ export const imageUploadForTag = async (req, res) => {
     return res.status(404).json({
       success: false,
       message: "Error",
-    });
-  }
+    });
+  }
 };
