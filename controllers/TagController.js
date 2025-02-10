@@ -1,6 +1,5 @@
 import { Image } from "../models/ImageModel.js";
 import { Tag } from "../models/TagModel.js";
-import { uploadMedia } from "../utils/cloudinary.js";
 import fs from "fs";
 export const getTags = async (req, res) => {
   try {
