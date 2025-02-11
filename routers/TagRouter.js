@@ -9,7 +9,7 @@ TagRouter.route("/").get(
     getTags
 );
 
-TagRouter.route("/images/:tag").get(
+TagRouter.route("/new/images/:tag").get(
     getTagWithImages
 );
 
